@@ -10,13 +10,7 @@
   const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const known = v => v && !/^n\/?a$/i.test(String(v).trim());   // the data writes "N/A" for an unknown position
 
-  $('#lead').textContent = `${C.lab.name}, ${C.lab.affiliation}.`;
-  $('#page-nums').innerHTML = [
-    [members.length, 'current members'],
-    [alumni.length, 'alumni'],
-    [count(members, 'computational'), 'current members in computational work'],
-    [count(members, 'experimental'), 'current members in experimental work']
-  ].map(([n, t]) => `<div><dt>${esc(t)}</dt><dd>${n}</dd></div>`).join('');
+  $('#lead').textContent = `Professor, current members and alumni of the ${C.lab.name}, ${C.lab.affiliation}.`;
   $('#subnav').innerHTML = [['professor', 'Professor']]
     .concat((C.members || []).map(g => ['g-' + slug(g.group), g.group]))
     .concat([['alumni', 'Alumni']]).concat(C.contact.group_photo ? [['group-photo', 'Group photo']] : [])

@@ -18,20 +18,20 @@
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ol>
-        <li><a href="index.html#glance"><span class="n">01</span>At a glance</a></li>
-        <li><a href="index.html#research"><span class="n">02</span>Research</a></li>
-        <li><a href="publications.html"><span class="n">03</span>Publications</a></li>
-        <li><a href="members.html"><span class="n">04</span>People</a></li>
-        <li><a href="index.html#news"><span class="n">05</span>News</a></li>
-        <li><a href="index.html#join"><span class="n">06</span>Join Us</a></li>
-        <li><a href="index.html#contact"><span class="n">07</span>Contact</a></li>
+        <li><a href="index.html" aria-current="page">Welcome</a></li>
+        <li><a href="members.html#professor">Professor</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ol>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <!-- scroll stage: the video carries no information; all text is DOM from window.CCEL -->
+  <!-- scroll stage: the video carries no information; all text is DOM from window.CCEL.
+       Phase A = lab name + tagline; phase B = the five research-area titles (links to research.html). No counts. -->
   <section class="stage" id="stage" aria-labelledby="hero-title">
     <div class="stage-pin">
       <img class="stage-poster" src="_shared/scroll/hero_poster.webp" alt="" width="1280" height="704" fetchpriority="high">
@@ -41,64 +41,37 @@
       <div class="stage-copy phase-a">
         <div class="wrap">
           <h1 class="hero-title" id="hero-title"></h1>
-          <p class="hero-meta" id="hero-meta"></p>
+          <div class="hero-meta"><p class="hero-tag" id="hero-tag"></p><p class="hero-aff" id="hero-aff"></p></div>
         </div>
       </div>
       <div class="stage-copy phase-b" data-hidden>
-        <div class="wrap"><dl class="bignums" id="bignums"></dl></div>
+        <div class="wrap">
+          <p class="stage-label">Research areas</p>
+          <ol class="area-index" id="area-index"></ol>
+        </div>
       </div>
       <div class="stage-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
     </div>
   </section>
 
-  <section class="band dark" id="glance" aria-labelledby="glance-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label"><span class="sec-no">01</span><h2 class="sec-title" id="glance-h">Lab at a glance</h2></div>
-        <p class="sec-aside" id="glance-aside"></p>
-      </div>
-      <div class="glance-grid">
-        <figure class="fig" aria-labelledby="f-years-h">
-          <div class="fig-head">
-            <div><h3 class="fig-title" id="f-years-h">Published papers per year</h3><p class="fig-sub" id="f-years-sub"></p></div>
-            <div class="fig-stats" id="f-years-stats"></div>
-          </div>
-          <div class="chart" id="chart-years"></div>
-        </figure>
-        <figure class="fig half-l" aria-labelledby="f-areas-h">
-          <div class="fig-head"><div><h3 class="fig-title" id="f-areas-h">Published papers by research area</h3><p class="fig-sub" id="f-areas-sub"></p></div></div>
-          <div class="chart" id="chart-areas"></div>
-        </figure>
-        <figure class="fig half-r" aria-labelledby="f-jour-h">
-          <div class="fig-head"><div><h3 class="fig-title" id="f-jour-h">Journals with the most papers</h3><p class="fig-sub" id="f-jour-sub"></p></div></div>
-          <div class="chart" id="chart-journals"></div>
-          <p class="fig-note" id="f-jour-note"></p>
-        </figure>
-        <figure class="fig" aria-labelledby="f-people-h">
-          <div class="fig-head"><div><h3 class="fig-title" id="f-people-h">Members and alumni by group</h3><p class="fig-sub">One dot per person.</p></div></div>
-          <div class="people-chart">
-            <div class="pc-block"><div class="stat"><b class="num" id="n-members"></b><span>current members</span></div><div class="chart" id="chart-members"></div></div>
-            <div class="pc-block"><div class="stat sm"><b class="num" id="n-alumni"></b><span>alumni</span></div><div class="chart" id="chart-alumni"></div></div>
-          </div>
-          <p class="legend"><span class="k-comp"><i></i>Computational</span><span class="k-exp"><i></i>Experimental</span><span class="k-na" id="k-na" hidden><i></i>Not specified</span></p>
-        </figure>
-      </div>
+  <div class="band dark news-band">
+    <div class="wrap news-grid">
+      <section id="news" aria-labelledby="news-h">
+        <div class="sec-head">
+          <div class="sec-label"><span class="sec-no">01</span><h2 class="sec-title" id="news-h">News</h2></div>
+        </div>
+        <ol class="news" id="news-list"></ol>
+      </section>
+      <section id="opening" aria-labelledby="opening-h">
+        <div class="sec-head">
+          <div class="sec-label"><span class="sec-no">02</span><h2 class="sec-title" id="opening-h">Open Position</h2></div>
+          <p class="sec-aside">Notice in Korean</p>
+        </div>
+        <p class="ko opening-ko" lang="ko" id="opening-ko"></p>
+        <p class="join-mail" id="join-mail"></p>
+      </section>
     </div>
-  </section>
-
-  <section class="band dark-2" id="research" aria-labelledby="research-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label"><span class="sec-no">02</span><h2 class="sec-title" id="research-h">Research</h2></div>
-      </div>
-      <p class="statement" id="research-statement"></p>
-      <div class="intro-grid">
-        <div id="research-intro"></div>
-        <figure class="intro-fig" id="research-fig"></figure>
-      </div>
-      <div class="areas" id="areas"></div>
-    </div>
-  </section>
+  </div>
 
   <section class="band light" id="publications" aria-labelledby="pubs-h">
     <div class="wrap">
@@ -106,47 +79,25 @@
         <div class="sec-label"><span class="sec-no">03</span><h2 class="sec-title" id="pubs-h">Selected publications</h2></div>
         <p class="sec-aside" id="pins-aside"></p>
       </div>
-      <ol class="pins" id="pins"></ol>
-      <div class="hl-head anchor" id="highlights">
-        <h2 class="hl-title">Recent highlights</h2>
-        <p class="count" id="hl-sub"></p>
-      </div>
-      <ol class="hl-grid" id="hl"></ol>
-      <details class="rules"><summary>How these two lists are chosen</summary><p id="rules"></p></details>
-      <p class="pub-links"><a class="more" href="publications.html" id="all-pubs">All publications</a><a class="more" href="publications.html#covers">Journal covers</a></p>
+      <ol class="pins-c" id="pins"></ol>
+      <p class="pub-links"><a class="more" href="publications.html#selected">Selected publications and recent highlights</a><a class="more" href="publications.html">All publications</a></p>
     </div>
   </section>
 
-  <section class="band dark" id="people" aria-labelledby="people-h">
+  <section class="band accent" id="about" aria-labelledby="about-h">
     <div class="wrap">
       <div class="sec-head">
-        <div class="sec-label"><span class="sec-no">04</span><h2 class="sec-title" id="people-h">People</h2></div>
-        <p class="sec-aside"><a class="more" href="members.html">Full profiles and alumni</a></p>
+        <div class="sec-label"><span class="sec-no">04</span><h2 class="sec-title" id="about-h">About CCEL</h2></div>
+        <p class="sec-aside">Lab introduction in Korean</p>
       </div>
-      <div class="prof" id="prof"></div>
-      <div class="groups" id="groups"></div>
-    </div>
-  </section>
-
-  <section class="band light" id="news" aria-labelledby="news-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label"><span class="sec-no">05</span><h2 class="sec-title" id="news-h">News</h2></div>
+      <div class="about-grid">
+        <p class="ko about-ko" lang="ko" id="about-ko"></p>
+        <ul class="about-links">
+          <li><a class="more" href="research.html">Research areas</a></li>
+          <li><a class="more" href="members.html">Members</a></li>
+          <li><a class="more" href="publications.html">Publications</a></li>
+        </ul>
       </div>
-      <ol class="news" id="news-list"></ol>
-    </div>
-  </section>
-
-  <section class="band accent" id="join" aria-labelledby="join-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label"><span class="sec-no">06</span><h2 class="sec-title" id="join-h">Join Us</h2></div>
-      </div>
-      <div class="join-grid">
-        <details class="kdet" id="opening"><summary><span>Open positions<small>Recruitment notice in Korean</small></span></summary><p class="ko" lang="ko" id="opening-ko"></p></details>
-        <details class="kdet" id="about"><summary><span>About the lab<small>Lab introduction in Korean</small></span></summary><p class="ko" lang="ko" id="about-ko"></p></details>
-      </div>
-      <p class="join-mail" id="join-mail"></p>
     </div>
   </section>
 </main>
@@ -154,16 +105,15 @@
 <footer class="site-foot" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-label"><span class="sec-no">07</span><h2 class="sec-title" id="contact-h">Contact</h2></div>
+      <div class="sec-label"><span class="sec-no">05</span><h2 class="sec-title" id="contact-h">Contact</h2></div>
     </div>
     <dl class="contact-grid" id="contact-body"></dl>
     <div class="foot-base">
       <span class="ccel-logo-plate"><img class="ccel-logo" src="_shared/img/logo2.png" alt="CCEL" width="150" height="76" loading="lazy"></span>
       <nav aria-label="Footer"><ol>
-        <li><a href="index.html#research">Research</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
-        <li><a href="members.html">People</a></li>
-        <li><a href="index.html#join">Join Us</a></li>
       </ol></nav>
       <span id="foot-aff"></span>
     </div>
@@ -172,7 +122,6 @@
 
 <script src="_shared/content.js"></script>
 <script src="js/common.js"></script>
-<script src="js/charts.js"></script>
 <script src="js/index.js"></script>
 <script src="js/stage.js"></script>
 </body>

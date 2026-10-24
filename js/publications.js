@@ -6,28 +6,21 @@
   U.initChrome();
 
   const P = C.publications;
-  const pub = U.published(), PL = CH.D.pipeline();
-  const pipeTotal = PL.reduce((s, r) => s + r.n, 0);
   const params = new URLSearchParams(location.search);
   const state = { q: params.get('q') || '', year: params.get('year') || '', status: params.get('status') || '', area: params.get('area') || '', lab: params.get('lab') === '1' };
 
-  /* ---------- header numbers + year chart (click a bar to filter) ---------- */
-  $('#lead').textContent = `${U.fmt(P.length)} entries in the lab's publication record, newest first. CCEL members are shown in bold.`;
-  $('#page-nums').innerHTML = [
-    [pub.length, 'published papers'],
-    [pipeTotal, PL.map(r => r.label.toLowerCase()).join(', ').replace(/, ([^,]*)$/, ' or $1')],
-    [(C.cover_publications || []).length, 'journal covers']
-  ].map(([n, t]) => `<div><dt>${esc(t)}</dt><dd>${U.fmt(n)}</dd></div>`).join('');
+  /* ---------- small year chart: one bar per year; selecting a bar jumps to that year in the list ---------- */
+  $('#lead').textContent = 'The lab\'s publication record, newest first. CCEL members are shown in bold.';
   const ych = $('#ychart');
   const Y = CH.years(ych, {
-    height: 260, clickable: true, selected: () => (state.year ? +state.year : null),
+    height: 170, clickable: true, selected: () => null,
     onDraw: el => U.$$('.ybtn', el).forEach(g => {
-      const pick = () => { state.year = state.year === g.dataset.year ? '' : g.dataset.year; $('#f-year').value = state.year; setTab('all'); apply(); };
+      const pick = () => jumpTo(g.dataset.year);
       g.addEventListener('click', pick);
       g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
     })
   }).Y;
-  $('#ychart-cap').textContent = `Published papers per year, ${Y.min}–${Y.max}. Select a year to filter the list; papers not yet published are shown apart.`;
+  $('#ychart-cap').textContent = `Published papers per year, ${Y.min}–${Y.max}. Select a year to jump to it in the list; papers not yet published are shown apart.`;
 
   /* ---------- filter controls ---------- */
   const years = [...new Set(P.map(p => p.year))].filter(Boolean).sort((a, b) => b - a);
@@ -124,6 +117,24 @@
       <img src="${esc(U.asset(c.image))}" alt="Journal cover: ${esc(label)}" loading="lazy" decoding="async"></a>
       <figcaption>${c.kind === 'back_page' ? '<b>Back or inside cover page</b><br>' : ''}${p ? `${U.rich(p.title)}<br><b>${esc(p.journal || '')}${p.journal ? ', ' : ''}${p.year}</b>` : ''}</figcaption></figure></li>`;
   }).join('');
+
+  /* ---------- year jump (from the chart): clear filters that hide the year, then scroll its heading below the bars ---------- */
+  function jumpTo(y) {
+    setTab('all');
+    const g = $(`#list .year-group[data-year="${y}"]`);
+    if (!g) return;
+    if (g.hidden || !g.querySelector('.entry:not([hidden])')) {
+      Object.assign(state, { q: '', year: '', status: '', area: '', lab: false });
+      $('#q').value = ''; $('#f-year').value = ''; $('#f-status').value = ''; $('#f-area').value = ''; $('#f-lab').checked = false;
+      apply();
+    }
+    const tools = $('#tools'), sticky = getComputedStyle(tools).position === 'sticky';
+    const hc = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hh-c')) || 0;
+    const top = g.getBoundingClientRect().top + window.scrollY - hc - (sticky ? tools.offsetHeight : 0) - 16;
+    window.scrollTo({ top, behavior: 'instant' });
+    const h = g.querySelector('h2');
+    if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
+  }
 
   /* ---------- tabs (+ #selected / #covers deep links) ---------- */
   const tabs = ['all', 'selected', 'covers'];

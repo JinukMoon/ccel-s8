@@ -17,13 +17,12 @@
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ol>
-        <li><a href="index.html#glance"><span class="n">01</span>At a glance</a></li>
-        <li><a href="index.html#research"><span class="n">02</span>Research</a></li>
-        <li><a href="publications.html" aria-current="page"><span class="n">03</span>Publications</a></li>
-        <li><a href="members.html"><span class="n">04</span>People</a></li>
-        <li><a href="index.html#news"><span class="n">05</span>News</a></li>
-        <li><a href="index.html#join"><span class="n">06</span>Join Us</a></li>
-        <li><a href="index.html#contact"><span class="n">07</span>Contact</a></li>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="members.html#professor">Professor</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html" aria-current="page">Publications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
       </ol>
     </nav>
   </div>
@@ -32,9 +31,8 @@
 <main id="main">
   <section class="page-hero" aria-labelledby="page-h">
     <div class="wrap">
-      <div class="sec-label"><span class="sec-no">03</span><h1 id="page-h">Publications</h1></div>
+      <div class="sec-label"><span class="sec-no" aria-hidden="true"></span><h1 id="page-h">Publications</h1></div>
       <p class="lead" id="lead"></p>
-      <dl class="page-nums" id="page-nums"></dl>
       <figure class="ychart-wrap" aria-labelledby="ychart-cap">
         <figcaption class="fig-sub" id="ychart-cap"></figcaption>
         <div class="chart" id="ychart" style="margin-top:20px"></div>
@@ -46,7 +44,7 @@
     <div class="wrap tools-in">
       <div class="tabs" role="tablist" aria-label="Publication views">
         <button type="button" role="tab" id="tab-all" aria-controls="panel-all" aria-selected="true">All publications</button>
-        <button type="button" role="tab" id="tab-selected" aria-controls="panel-selected" aria-selected="false" tabindex="-1">Selected</button>
+        <button type="button" role="tab" id="tab-selected" aria-controls="panel-selected" aria-selected="false" tabindex="-1">Selected and recent highlights</button>
         <button type="button" role="tab" id="tab-covers" aria-controls="panel-covers" aria-selected="false" tabindex="-1">Covers</button>
       </div>
       <p class="count" id="count" aria-live="polite"></p>
@@ -86,16 +84,16 @@
 <footer class="site-foot" id="contact" aria-labelledby="contact-h">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-label"><span class="sec-no">07</span><h2 class="sec-title" id="contact-h">Contact</h2></div>
+      <div class="sec-label"><span class="sec-no" aria-hidden="true"></span><h2 class="sec-title" id="contact-h">Contact</h2></div>
     </div>
     <dl class="contact-grid" id="contact-body"></dl>
     <div class="foot-base">
       <span class="ccel-logo-plate"><img class="ccel-logo" src="_shared/img/logo2.png" alt="CCEL" width="150" height="76" loading="lazy"></span>
       <nav aria-label="Footer"><ol>
-        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html">Welcome</a></li>
+        <li><a href="members.html">Members</a></li>
+        <li><a href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
-        <li><a href="members.html">People</a></li>
-        <li><a href="index.html#join">Join Us</a></li>
       </ol></nav>
       <span id="foot-aff"></span>
     </div>

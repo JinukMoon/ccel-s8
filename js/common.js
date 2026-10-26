@@ -180,19 +180,21 @@
     }
   };
 
-  /* ---------- footer contact, same on every page ---------- */
-  U.renderFooter = () => {
-    const el = U.$('#contact-body');
-    if (!el) return;
+  /* ---------- contact rows (landing footer and contact.html) ---------- */
+  U.contactRows = () => {
     const k = C.contact;
-    const rows = [
+    return [
       ['Address', U.esc(k.address)],
       ['Email', k.email ? `<a href="mailto:${U.esc(k.email)}">${U.esc(k.email)}</a>` : ''],
       ['Professor office', U.esc(k.professor_office)],
       ['Laboratory', U.esc(k.laboratory)],
       ['Student office', U.esc(k.student_office)]
-    ].filter(r => r[1]);
-    el.innerHTML = rows.map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('');
+    ].filter(r => r[1]).map(([t, d]) => `<div><dt>${t}</dt><dd>${d}</dd></div>`).join('');
+  };
+  // round v6: only the landing page keeps the contact block in its footer; other pages have the slim footer
+  U.renderFooter = () => {
+    const el = U.$('#contact-body');
+    if (el) el.innerHTML = U.contactRows();
     const aff = U.$('#foot-aff');
     if (aff) aff.textContent = `${C.lab.name} · ${C.lab.affiliation}`;
   };

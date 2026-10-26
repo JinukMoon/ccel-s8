@@ -18,11 +18,11 @@
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ol>
         <li><a href="index.html">Welcome</a></li>
-        <li><a href="members.html#professor">Professor</a></li>
+        <li><a href="professor.html">Professor</a></li>
         <li><a href="members.html" aria-current="page">Members</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ol>
     </nav>
   </div>
@@ -33,40 +33,43 @@
     <div class="wrap">
       <div class="sec-label"><span class="sec-no" aria-hidden="true"></span><h1 id="page-h">Members</h1></div>
       <p class="lead" id="lead"></p>
-      <nav class="subnav" id="subnav" aria-label="On this page"></nav>
+      <div class="view-bar">
+        <nav class="viewswitch" aria-label="Members or alumni">
+          <a href="#members" data-view="members">Current members</a><a href="#alumni" data-view="alumni">Alumni</a>
+        </nav>
+        <nav class="subnav" id="jump-members" aria-label="Current member groups"></nav>
+        <nav class="subnav" id="jump-alumni" aria-label="Alumni groups" hidden></nav>
+      </div>
     </div>
   </section>
 
-  <section class="band light" id="professor" aria-labelledby="prof-h">
-    <div class="wrap"><div class="prof-full" id="prof-full"></div></div>
-  </section>
-
-  <section class="band light" id="members" aria-label="Current members" style="padding-top:0">
-    <div class="wrap" id="member-groups"></div>
-  </section>
-
-  <section class="band light-2" id="alumni" aria-labelledby="alumni-h">
+  <section class="band light view" id="members" aria-labelledby="members-h">
     <div class="wrap">
-      <div class="grp-head" style="margin-bottom:8px"><h2 id="alumni-h">Alumni</h2><span class="c num" id="alumni-n"></span><span class="split" id="alumni-split"></span></div>
+      <div class="view-head"><h2 id="members-h">Current members</h2><p class="legend8" id="legend-m"></p></div>
+      <div id="member-groups"></div>
+    </div>
+  </section>
+
+  <section class="band light-2 view" id="alumni" aria-labelledby="alumni-h" hidden>
+    <div class="wrap">
+      <div class="view-head"><h2 id="alumni-h">Alumni</h2><span class="c num" id="alumni-n"></span><span class="split" id="alumni-split"></span><p class="legend8" id="legend-a"></p></div>
       <div id="alumni-groups"></div>
-      <figure class="group-photo anchor" id="group-photo"></figure>
+      <p class="back-row"><a class="more" href="#members" data-view="members">Back to current members</a></p>
     </div>
   </section>
 </main>
 
-<footer class="site-foot" id="contact" aria-labelledby="contact-h">
+<footer class="site-foot slim">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-label"><span class="sec-no" aria-hidden="true"></span><h2 class="sec-title" id="contact-h">Contact</h2></div>
-    </div>
-    <dl class="contact-grid" id="contact-body"></dl>
     <div class="foot-base">
       <span class="ccel-logo-plate"><img class="ccel-logo" src="_shared/img/logo2.png" alt="CCEL" width="150" height="76" loading="lazy"></span>
       <nav aria-label="Footer"><ol>
         <li><a href="index.html">Welcome</a></li>
+        <li><a href="professor.html">Professor</a></li>
         <li><a href="members.html">Members</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ol></nav>
       <span id="foot-aff"></span>
     </div>
